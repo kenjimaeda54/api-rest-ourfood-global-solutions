@@ -16,6 +16,15 @@ public class UserService {
         return userDao.getUsersAll();
     }
 
+
+    public  List<Users> getUserById(Integer id){
+        return userDao.getUserById(id);
+    }
+
+    public  List<Users> getUserByEmail(String email){
+        return  userDao.getUserByEmail(email);
+    }
+
     public void insertUsers(Users users) {
         userDao.insertUsers(users);
     }
