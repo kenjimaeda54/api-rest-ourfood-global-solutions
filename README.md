@@ -12,8 +12,9 @@ API sera responsável por persistir os dados necessários dos usuários, seus po
 
 ## FETATURES
 - Usamos projeto de software DAO
-- Interface e implementada  por uma classe  é  por polimorfismo a camada Service  comunica com os controller
-- Classe que implementa a interface DAO,  responsável por toda logica do banco(SELECT,UPDATE,DELTE,INSERT).
+- Polimorfismo, classe Service chama os métodos da classe que implementa a interface DAO é retorna para classe Controller
+- Objetivo de a classe Serivce  é  obter as informações necessárias que classe Controller precisa.
+- Classe que implementa a interface DAO,  responsável por toda logica do banco(SELECT, UPDATE, DELTE, INSERT).
 - Controller faz as requestes com o servidor  é  retorna  para camada service
 - Controller recebe as anotations(GET, PUT,DELTE,EDIT,POST).
 
