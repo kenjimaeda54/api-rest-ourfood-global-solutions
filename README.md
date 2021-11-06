@@ -1,5 +1,5 @@
 ### API REST, UORFOOD
-UORFOOD surgiu apos a incentiva diminuir o desperdico de alimentos e acabaar com a fome no mundo,esta API sera parte da solucao.
+UORFOOD surgiu apos a incentiva diminuir o desperdiço de alimentos e acabar com a fome no mundo, esta API sera parte da solução.
 
 ## SOLUÇÃO
 Para atingir esse objetivo, aplicação completa sera software de recompensas, quanto mais pessoa doar alimentos, mais pontos ira acumular. Seus pontos podem ser posteriormente trocados por recompensas ou em lojas conveniadas por produtos
