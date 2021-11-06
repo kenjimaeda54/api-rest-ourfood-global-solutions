@@ -17,15 +17,24 @@ public class UserService {
     }
 
 
-    public  List<Users> getUserById(Integer id){
+    public List<Users> getUserById(Integer id) {
         return userDao.getUserById(id);
     }
 
-    public  List<Users> getUserByEmail(String email){
-        return  userDao.getUserByEmail(email);
+    public List<Users> getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
     }
 
     public void insertUsers(Users users) {
         userDao.insertUsers(users);
     }
+
+    public void editUsers(Users users, Integer id) {
+        userDao.editUsers(users, id);
+    }
+
+    public void deleteUser(Integer id) {
+        userDao.deleteUser(id);
+    }
+
 }

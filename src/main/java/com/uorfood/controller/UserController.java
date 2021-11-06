@@ -53,5 +53,20 @@ public class UserController {
         return Response.accepted().build();
     }
 
+    @PUT
+    @Path("{id}")
+    @Consumes("application/json")
+    public Response editUsers(Users users, @PathParam("id") Integer id) {
+        service.editUsers(users, id);
+        return Response.accepted().build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteUser(@PathParam("id") Integer id) {
+        service.deleteUser(id);
+        return Response.accepted().build();
+    }
+
 
 }

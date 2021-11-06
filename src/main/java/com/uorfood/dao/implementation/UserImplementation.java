@@ -133,6 +133,40 @@ public class UserImplementation implements UserDao {
         }
     }
 
+    @Override
+    public void editUsers(Users users, Integer id) {
+        String query = "UPDATE USERS SET user_name=?,user_password=?,user_punctuation=?,user_donation=? WHERE user_id=?";
+        try {
+            PreparedStatement ps = coon.prepareStatement(query);
+            ps.setString(1, users.getName());
+            ps.setString(2, users.getPassword());
+            ps.setInt(3, users.getPunctuation());
+            ps.setInt(4, users.getDonation());
+            ps.setInt(5, id);
+            ps.executeQuery();
+            coon.close();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void deleteUser(Integer id) {
+        String query = "DELETE FROM users WHERE user_id=?";
+        try {
+            PreparedStatement ps = coon.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeQuery();
+            ps.close();
+            coon.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
 
