@@ -12,6 +12,7 @@ public class Company {
     private int userId;
 
 
+
     public int getDonation() {
         return donation;
     }
