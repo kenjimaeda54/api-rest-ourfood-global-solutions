@@ -1,4 +1,9 @@
 ### API REST, UORFOOD
+UORFOOD surgiu apos a incentiva diminuir o desperdico de alimentos e acabaar com a fome no mundo,esta API sera parte da solucao.
+
+## SOLUÇÃO
+Para atingir esse objetivo, aplicação completa sera software de recompensas, quanto mais pessoa doar alimentos, mais pontos ira acumular. Seus pontos podem ser posteriormente trocados por recompensas ou em lojas conveniadas por produtos
+API sera responsável por persistir os dados necessários dos usuários, seus pontos e os produtos doados
 
 ## MOTIVACAO
 - Criar uma API para ser consumida no front end,com persistência de dados no Banco da Oracle SQL
