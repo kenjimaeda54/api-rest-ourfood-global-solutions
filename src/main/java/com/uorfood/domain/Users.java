@@ -10,6 +10,15 @@ public class Users {
     private String password;
     private int punctuation = 0;
     private int donation = 0;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public int getDonation() {
         return donation;

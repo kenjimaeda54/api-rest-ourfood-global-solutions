@@ -35,14 +35,11 @@ public class ProductImplementation implements ProductDao {
                     product.setQuantity(rest.getInt("product_quantity"));
                     product.setTitle(rest.getString("product_title"));
                     product.setUserId(rest.getInt("user_id"));
-                    product.setValidate(rest.getString("product_validate"));
                     products.add(product);
                 }
 
             }
-            coon.close();
-            rest.close();
-            stm.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,17 +48,15 @@ public class ProductImplementation implements ProductDao {
 
     @Override
     public void insertProduct(Products products) {
-        String query = "INSERT INTO MARKET_PRODUCTS(product_title,product_validate,product_quantity,product_link,user_id) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO MARKET_PRODUCTS(product_title,product_quantity,product_link,user_id) VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = coon.prepareStatement(query);
             ps.setString(1, products.getTitle());
-            ps.setString(2, products.getValidate());
-            ps.setInt(3, products.getQuantity());
-            ps.setString(4, products.getPhoto());
-            ps.setInt(5, products.getUserId());
+            ps.setInt(2, products.getQuantity());
+            ps.setString(3, products.getPhoto());
+            ps.setInt(4, products.getUserId());
             ps.executeQuery();
-            ps.close();
-            coon.close();
+
 
         } catch (SQLException e) {
             e.printStackTrace();

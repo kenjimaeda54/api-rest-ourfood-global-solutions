@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Products {
     private  int id;
     private  String title;
-    private  String validate;
     private  int quantity = 0;
     private  int userId;
     private  String photo;
@@ -43,13 +42,6 @@ public class Products {
         this.title = title;
     }
 
-    public String getValidate() {
-        return validate;
-    }
-
-    public void setValidate(String validate) {
-        this.validate = validate;
-    }
 
     public int getQuantity() {
         return quantity;

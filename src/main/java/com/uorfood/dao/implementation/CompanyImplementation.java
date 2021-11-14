@@ -39,9 +39,7 @@ public class CompanyImplementation implements CompanyDao {
                     companies.add(company);
                 }
             }
-            conn.close();
-            rst.close();
-            stm.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,9 +65,7 @@ public class CompanyImplementation implements CompanyDao {
                         company.setPhoto(rst.getString("company_link"));
                         company.setLocation(rst.getString("company_location"));
                         companies.add(company);
-                        conn.close();
-                        rst.close();
-                        stm.close();
+
                     }
                 }
             }
@@ -90,8 +86,7 @@ public class CompanyImplementation implements CompanyDao {
             ps.setString(4, company.getLocation());
             ps.setInt(5, company.getUserId());
             ps.executeQuery();
-            ps.close();
-            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,8 +104,7 @@ public class CompanyImplementation implements CompanyDao {
             ps.setInt(5, company.getUserId());
             ps.setInt(6, id);
             ps.executeQuery();
-            ps.close();
-            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -123,8 +117,7 @@ public class CompanyImplementation implements CompanyDao {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ps.executeQuery();
-            ps.close();
-            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
