@@ -9,15 +9,6 @@ public class Config {
     public  static  final  String keyUser = "";
     public  static  final  String keyPwd = "";
     public static final String baseUrl =  "";
-    //JOAO
-    //RM87894
-    //160502
-    //kenji
-    //RM87925
-    //080689
-    //karen
-    //RM88429
-    //090402
 
 
     public Connection getConnection() throws SQLException {
