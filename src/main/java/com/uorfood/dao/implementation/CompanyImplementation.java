@@ -4,8 +4,6 @@ import com.uorfood.Config;
 import com.uorfood.dao.CompanyDao;
 import com.uorfood.domain.Company;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +29,12 @@ public class CompanyImplementation implements CompanyDao {
                 while (rst.next()) {
                     Company company = new Company();
                     company.setName(rst.getString("company_name"));
-                    company.setLocation(rst.getString("company_location"));
+                    company.setEmail(rst.getString("company_email"));
                     company.setDonation(rst.getInt("company_donation"));
                     company.setPhoto(rst.getString("company_link"));
                     company.setId(rst.getInt("company_id"));
+                    company.setShow(rst.getInt("company_show"));
+                    company.setPunctuation(rst.getInt("company_punctuation"));
                     company.setUserId(rst.getInt("user_id"));
                     companies.add(company);
                 }
@@ -47,7 +47,7 @@ public class CompanyImplementation implements CompanyDao {
     }
 
     @Override
-    public List<Company> getCompanyById(Integer id) {
+    public List<Company> getCompanyByEmail(String email) {
         String query = "SELECT * FROM COMPANY";
         companies = null;
         try {
@@ -57,13 +57,15 @@ public class CompanyImplementation implements CompanyDao {
                 companies = new ArrayList<Company>();
                 while (rst.next()) {
                     Company company = new Company();
-                    if (id.equals(rst.getInt("company_id"))) {
+                    if (email.equals(rst.getString("company_email"))) {
                         company.setUserId(rst.getInt("user_id"));
                         company.setDonation(rst.getInt("company_donation"));
                         company.setId(rst.getInt("company_id"));
                         company.setName(rst.getString("company_name"));
                         company.setPhoto(rst.getString("company_link"));
-                        company.setLocation(rst.getString("company_location"));
+                        company.setPunctuation(rst.getInt("company_punctuation"));
+                        company.setShow(rst.getInt("company_show"));
+                        company.setEmail(rst.getString("company_email"));
                         companies.add(company);
 
                     }
@@ -77,14 +79,16 @@ public class CompanyImplementation implements CompanyDao {
 
     @Override
     public void insertCompany(Company company) {
-        String query = "INSERT INTO COMPANY (company_name,company_donation,company_link,company_location,user_id) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO COMPANY (company_name,company_donation,company_link,company_email,company_punctuation,company_show,user_id) VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, company.getName());
             ps.setInt(2, company.getDonation());
             ps.setString(3, company.getPhoto());
-            ps.setString(4, company.getLocation());
-            ps.setInt(5, company.getUserId());
+            ps.setString(4, company.getEmail());
+            ps.setInt(5,company.getPunctuation());
+            ps.setInt(6, company.getShow());
+            ps.setInt(7,company.getUserId());
             ps.executeQuery();
 
         } catch (SQLException e) {
@@ -94,15 +98,17 @@ public class CompanyImplementation implements CompanyDao {
 
     @Override
     public void editCompany(Company company, Integer id) {
-        String query = "UPDATE company SET company_name=?,company_location=?,company_link=?,company_donation=? WHERE user_id=? AND company_id=?";
+        String query = "UPDATE company SET company_name=?,company_email=?,company_link=?,company_donation=?,company_punctuation=?,company_show=? WHERE user_id=? AND company_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, company.getName());
-            ps.setString(2, company.getLocation());
+            ps.setString(2, company.getEmail());
             ps.setString(3, company.getPhoto());
             ps.setInt(4, company.getDonation());
-            ps.setInt(5, company.getUserId());
-            ps.setInt(6, id);
+            ps.setInt(5, company.getPunctuation());
+            ps.setInt(6,company.getShow());
+            ps.setInt(7,company.getUserId());
+            ps.setInt(8,id);
             ps.executeQuery();
 
         } catch (SQLException e) {

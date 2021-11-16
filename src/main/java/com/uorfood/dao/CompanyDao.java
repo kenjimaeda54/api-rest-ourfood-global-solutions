@@ -7,7 +7,7 @@ import java.util.List;
 public interface CompanyDao {
     List<Company> getAllCompany();
 
-    List<Company> getCompanyById(Integer id);
+    List<Company> getCompanyByEmail(String email);
 
     void insertCompany(Company company);
 

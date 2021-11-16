@@ -27,10 +27,10 @@ public class CompanyController {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{email}")
     @Produces("application/json")
-    public List<Company> getCompanyById(@PathParam("id") Integer id) {
-        return companyService.getCompanyById(id);
+    public List<Company> getCompanyById(@PathParam("email") String email) {
+        return companyService.getCompanyByEmail(email);
     }
 
     @POST

@@ -16,8 +16,8 @@ public class CompanyService {
         return companyDao.getAllCompany();
     }
 
-    public List<Company> getCompanyById(Integer id) {
-        return companyDao.getCompanyById(id);
+    public List<Company> getCompanyByEmail(String email) {
+        return companyDao.getCompanyByEmail(email);
     }
 
     public void insertCompany(Company company) {

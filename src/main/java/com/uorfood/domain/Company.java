@@ -6,12 +6,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Company {
     private int id;
     private String name;
-    private String location;
+    private String email;
     private String photo = null;
     private int donation = 0;
+    private int punctuation = 0;
     private int userId;
+    private int show = 0;
 
+    public int getShow() {
+        return show;
+    }
 
+    public void setShow(int show) {
+        this.show = show;
+    }
+
+    public int getPunctuation() {
+        return punctuation;
+    }
+
+    public void setPunctuation(int punctuation) {
+        this.punctuation = punctuation;
+    }
 
     public int getDonation() {
         return donation;
@@ -37,12 +53,12 @@ public class Company {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhoto() {
