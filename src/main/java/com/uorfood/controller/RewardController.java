@@ -6,6 +6,7 @@ import com.uorfood.service.RewardService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.UriInfo;
 import java.sql.SQLException;
 import java.util.List;
 
+@Path("/rewards")
 public class RewardController {
     RewardService service = new RewardService();
 
