@@ -1,7 +1,7 @@
 package com.uorfood.controller;
 
 
-import com.uorfood.domain.Reward;
+import com.uorfood.ddd.Reward;
 import com.uorfood.service.RewardService;
 
 import javax.ws.rs.GET;

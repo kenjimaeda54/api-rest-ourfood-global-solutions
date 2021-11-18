@@ -1,7 +1,6 @@
 package com.uorfood.controller;
 
-import com.uorfood.domain.Donation;
-import com.uorfood.domain.Users;
+import com.uorfood.ddd.Donation;
 import com.uorfood.service.DonationService;
 
 import javax.ws.rs.*;

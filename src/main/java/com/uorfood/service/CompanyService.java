@@ -1,7 +1,7 @@
 package com.uorfood.service;
 
 import com.uorfood.dao.implementation.CompanyImplementation;
-import com.uorfood.domain.Company;
+import com.uorfood.ddd.Company;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.uorfood.dao;
 
-import com.uorfood.domain.Donation;
+import com.uorfood.ddd.Donation;
 
 import java.util.List;
 

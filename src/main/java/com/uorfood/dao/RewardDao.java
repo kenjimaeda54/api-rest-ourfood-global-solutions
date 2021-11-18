@@ -1,6 +1,6 @@
 package com.uorfood.dao;
 
-import com.uorfood.domain.Reward;
+import com.uorfood.ddd.Reward;
 
 import java.util.List;
 

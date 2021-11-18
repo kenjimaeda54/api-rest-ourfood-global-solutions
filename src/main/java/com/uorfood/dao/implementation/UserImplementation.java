@@ -3,7 +3,7 @@ package com.uorfood.dao.implementation;
 
 import com.uorfood.Config;
 import com.uorfood.dao.UserDao;
-import com.uorfood.domain.Users;
+import com.uorfood.ddd.Users;
 
 import java.sql.*;
 import java.sql.Connection;

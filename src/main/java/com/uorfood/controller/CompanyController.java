@@ -3,7 +3,7 @@ package com.uorfood.controller;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-import com.uorfood.domain.Company;
+import com.uorfood.ddd.Company;
 import com.uorfood.service.CompanyService;
 
 import javax.ws.rs.core.Context;

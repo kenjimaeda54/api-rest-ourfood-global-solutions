@@ -1,8 +1,7 @@
 package com.uorfood.service;
 
-import com.uorfood.dao.implementation.ProductImplementation;
 import com.uorfood.dao.implementation.RewardImplementation;
-import com.uorfood.domain.Reward;
+import com.uorfood.ddd.Reward;
 
 import java.sql.SQLException;
 import java.util.List;

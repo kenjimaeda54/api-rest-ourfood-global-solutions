@@ -2,7 +2,7 @@ package com.uorfood.dao.implementation;
 
 import com.uorfood.Config;
 import com.uorfood.dao.CompanyDao;
-import com.uorfood.domain.Company;
+import com.uorfood.ddd.Company;
 
 import java.sql.*;
 import java.util.ArrayList;

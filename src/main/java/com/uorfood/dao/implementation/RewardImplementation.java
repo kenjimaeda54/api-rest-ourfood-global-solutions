@@ -2,8 +2,7 @@ package com.uorfood.dao.implementation;
 
 import com.uorfood.Config;
 import com.uorfood.dao.RewardDao;
-import com.uorfood.domain.Products;
-import com.uorfood.domain.Reward;
+import com.uorfood.ddd.Reward;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,23 +1,32 @@
-package com.uorfood.domain;
+package com.uorfood.ddd;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Users {
+public class Company {
     private int id;
     private String name;
     private String email;
-    private String password;
-    private int punctuation = 0;
+    private String photo = null;
     private int donation = 0;
-    private String photo;
+    private int punctuation = 0;
+    private int userId;
+    private int show = 0;
 
-    public String getPhoto() {
-        return photo;
+    public int getShow() {
+        return show;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setShow(int show) {
+        this.show = show;
+    }
+
+    public int getPunctuation() {
+        return punctuation;
+    }
+
+    public void setPunctuation(int punctuation) {
+        this.punctuation = punctuation;
     }
 
     public int getDonation() {
@@ -52,22 +61,19 @@ public class Users {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public int getPunctuation() {
-        return punctuation;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setPunctuation(int punctuation) {
-        this.punctuation = punctuation;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-
-
 }
-

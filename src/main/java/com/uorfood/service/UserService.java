@@ -1,7 +1,7 @@
 package com.uorfood.service;
 
 import com.uorfood.dao.implementation.UserImplementation;
-import com.uorfood.domain.Users;
+import com.uorfood.ddd.Users;
 
 import java.sql.SQLException;
 import java.util.List;

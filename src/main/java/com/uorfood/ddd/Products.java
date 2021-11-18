@@ -1,4 +1,4 @@
-package com.uorfood.domain;
+package com.uorfood.ddd;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

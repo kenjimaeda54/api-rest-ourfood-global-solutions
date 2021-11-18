@@ -1,6 +1,6 @@
 package com.uorfood.dao;
 
-import com.uorfood.domain.Users;
+import com.uorfood.ddd.Users;
 
 import java.util.List;
 

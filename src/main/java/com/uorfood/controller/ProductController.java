@@ -1,6 +1,6 @@
 package com.uorfood.controller;
 
-import com.uorfood.domain.Products;
+import com.uorfood.ddd.Products;
 import com.uorfood.service.ProductService;
 
 import javax.ws.rs.GET;

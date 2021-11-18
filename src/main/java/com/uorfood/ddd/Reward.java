@@ -1,15 +1,13 @@
-package com.uorfood.domain;
-
+package com.uorfood.ddd;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Donation {
+public class Reward {
     private Integer id;
-    private String  title;
+    private String title;
     private String photo;
-    private Integer totalDonation;
-    private Integer valueDonation;
+    private Integer userId;
 
     public Integer getId() {
         return id;
@@ -35,19 +33,11 @@ public class Donation {
         this.photo = photo;
     }
 
-    public Integer getTotalDonation() {
-        return totalDonation;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setTotalDonation(Integer totalDonation) {
-        this.totalDonation = totalDonation;
-    }
-
-    public Integer getValueDonation() {
-        return valueDonation;
-    }
-
-    public void setValueDonation(Integer valueDonation) {
-        this.valueDonation = valueDonation;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

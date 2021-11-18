@@ -1,6 +1,6 @@
 package com.uorfood.controller;
 
-import com.uorfood.domain.Users;
+import com.uorfood.ddd.Users;
 import com.uorfood.service.UserService;
 
 import javax.ws.rs.*;

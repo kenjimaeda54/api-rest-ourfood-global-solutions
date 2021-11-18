@@ -2,9 +2,7 @@ package com.uorfood.dao.implementation;
 
 import com.uorfood.Config;
 import com.uorfood.dao.DonationDao;
-import com.uorfood.domain.Donation;
-import com.uorfood.domain.Products;
-import com.uorfood.domain.Users;
+import com.uorfood.ddd.Donation;
 
 import java.sql.*;
 import java.util.ArrayList;
