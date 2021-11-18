@@ -10,7 +10,6 @@ import java.util.List;
 
 public class DonationImplementation implements DonationDao {
     private Config config = new Config();
-    private Connection coon = config.getConnection();
     private static List<Donation> donations;
 
     public DonationImplementation() throws SQLException {
@@ -21,9 +20,11 @@ public class DonationImplementation implements DonationDao {
     public List<Donation> getAllDonation() {
         String query = "SELECT * FROM DONATION";
         donations = null;
-        try {
-            Statement stm = coon.createStatement();
-            ResultSet rest = stm.executeQuery(query);
+        try (Connection coon = config.getConnection();
+             Statement stm = coon.createStatement();
+             ResultSet rest = stm.executeQuery(query);
+        ) {
+
             if (donations == null) {
                 donations = new ArrayList<Donation>();
                 while (rest.next()) {
@@ -47,8 +48,10 @@ public class DonationImplementation implements DonationDao {
     @Override
     public void updateDonation(Donation donation, Integer id) {
         String query = "UPDATE DONATION SET donation_value=? WHERE donation_id=?";
-        try {
+        try(Connection coon = config.getConnection();
             PreparedStatement ps = coon.prepareStatement(query);
+        ) {
+
             ps.setInt(1, donation.getValueDonation());
             ps.setInt(2, id);
             ps.executeQuery();
@@ -62,9 +65,11 @@ public class DonationImplementation implements DonationDao {
     public List<Donation> getById(Integer id) {
         String query = "SELECT * FROM DONATION";
         donations = null;
-        try {
+        try(Connection coon = config.getConnection();
             Statement stm = coon.createStatement();
             ResultSet rst = stm.executeQuery(query);
+        ) {
+
             if (donations == null) {
                 donations = new ArrayList<Donation>();
                 while (rst.next()) {

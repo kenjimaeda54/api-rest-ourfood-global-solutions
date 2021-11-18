@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RewardImplementation implements RewardDao {
     private Config config = new Config();
-    private Connection coon = config.getConnection();
+
 
     private static List<Reward> rewards;
 
@@ -23,9 +23,11 @@ public class RewardImplementation implements RewardDao {
     public List<Reward> getAllReward() {
         String query = "SELECT * FROM REWARDS";
         rewards = null;
-        try {
-            Statement stm = coon.createStatement();
-            ResultSet rest = stm.executeQuery(query);
+        try (Connection coon = config.getConnection();
+             Statement stm = coon.createStatement();
+             ResultSet rest = stm.executeQuery(query);
+        ) {
+
             if (rewards == null) {
                 rewards = new ArrayList<Reward>();
                 while (rest.next()) {
@@ -48,8 +50,10 @@ public class RewardImplementation implements RewardDao {
     @Override
     public void insertReward(Reward reward) {
         String query = "INSERT INTO REWARDS(reward_name,reward_link,user_id) VALUES(?,?,?)";
-        try {
+        try(Connection coon = config.getConnection();
             PreparedStatement ps = coon.prepareStatement(query);
+        ) {
+
             ps.setString(1, reward.getTitle());
             ps.setString(2, reward.getPhoto());
             ps.setInt(3, reward.getUserId());

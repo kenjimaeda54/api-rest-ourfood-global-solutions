@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ProductImplementation implements ProductDao {
     private Config config = new Config();
-    private Connection coon = config.getConnection();
+
 
     private static List<Products> products;
 
@@ -23,9 +23,11 @@ public class ProductImplementation implements ProductDao {
     public List<Products> getAllProduct() {
         String query = "SELECT * FROM MARKET_PRODUCTS";
         products = null;
-        try {
-            Statement stm = coon.createStatement();
-            ResultSet rest = stm.executeQuery(query);
+        try (Connection coon = config.getConnection();
+             Statement stm = coon.createStatement();
+             ResultSet rest = stm.executeQuery(query);
+        ) {
+
             if (products == null) {
                 products = new ArrayList<Products>();
                 while (rest.next()) {
@@ -49,8 +51,10 @@ public class ProductImplementation implements ProductDao {
     @Override
     public void insertProduct(Products products) {
         String query = "INSERT INTO MARKET_PRODUCTS(product_title,product_quantity,product_link,user_id) VALUES(?,?,?,?)";
-        try {
-            PreparedStatement ps = coon.prepareStatement(query);
+        try (Connection coon = config.getConnection();
+             PreparedStatement ps = coon.prepareStatement(query);
+        ) {
+
             ps.setString(1, products.getTitle());
             ps.setInt(2, products.getQuantity());
             ps.setString(3, products.getPhoto());

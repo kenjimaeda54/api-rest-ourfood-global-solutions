@@ -15,7 +15,7 @@ import java.util.List;
 public class UserImplementation implements UserDao {
     private Config config = new Config();
     private static List<Users> users;
-    private Connection coon = config.getConnection();
+
 
     public UserImplementation() throws SQLException {
 
@@ -25,9 +25,12 @@ public class UserImplementation implements UserDao {
     public List<Users> getUsersAll() {
         String query = "SELECT * FROM USERS";
         users = null;
-        try {
-            Statement stm = coon.createStatement();
-            ResultSet rst = stm.executeQuery(query);
+        try (Connection coon = config.getConnection();
+             Statement stm = coon.createStatement();
+             ResultSet rst = stm.executeQuery(query);
+
+        ) {
+
             if (users == null) {
                 users = new ArrayList<Users>();
                 while (rst.next()) {
@@ -54,9 +57,11 @@ public class UserImplementation implements UserDao {
     public List<Users> getUserById(Integer id) {
         String query = "SELECT * FROM USERS";
         users = null;
-        try {
-            Statement stm = coon.createStatement();
-            ResultSet rst = stm.executeQuery(query);
+        try (Connection coon = config.getConnection();
+             Statement stm = coon.createStatement();
+             ResultSet rst = stm.executeQuery(query);
+        ) {
+
             if (users == null) {
                 users = new ArrayList<Users>();
                 while (rst.next()) {
@@ -84,9 +89,11 @@ public class UserImplementation implements UserDao {
     public List<Users> getUserByEmail(String email) {
         String query = "SELECT * FROM USERS";
         users = null;
-        try {
-            Statement stm = coon.createStatement();
-            ResultSet rst = stm.executeQuery(query);
+        try (Connection coon = config.getConnection();
+             Statement stm = coon.createStatement();
+             ResultSet rst = stm.executeQuery(query);
+        ) {
+
             if (users == null) {
                 users = new ArrayList<Users>();
                 Users user = new Users();
@@ -115,8 +122,10 @@ public class UserImplementation implements UserDao {
     @Override
     public void insertUsers(Users users) {
         String query = "INSERT INTO USERS(user_email,user_name,user_password,user_punctuation,user_donation,user_link) VALUES(?,?,?,?,?,?) ";
-        try {
-            PreparedStatement ps = coon.prepareStatement(query);
+        try (Connection coon = config.getConnection();
+             PreparedStatement ps = coon.prepareStatement(query);
+        ) {
+
             ps.setString(1, users.getEmail());
             ps.setString(2, users.getName());
             ps.setString(3, users.getPassword());
@@ -133,8 +142,10 @@ public class UserImplementation implements UserDao {
     @Override
     public void editUsers(Users users, Integer id) {
         String query = "UPDATE USERS SET user_name=?,user_password=?,user_punctuation=?,user_donation=?,user_link=? WHERE user_id=?";
-        try {
-            PreparedStatement ps = coon.prepareStatement(query);
+        try (Connection coon = config.getConnection();
+             PreparedStatement ps = coon.prepareStatement(query);
+        ) {
+
             ps.setString(1, users.getName());
             ps.setString(2, users.getPassword());
             ps.setInt(3, users.getPunctuation());
@@ -152,8 +163,9 @@ public class UserImplementation implements UserDao {
     @Override
     public void deleteUser(Integer id) {
         String query = "DELETE FROM users WHERE user_id=?";
-        try {
-            PreparedStatement ps = coon.prepareStatement(query);
+        try (Connection coon = config.getConnection();
+             PreparedStatement ps = coon.prepareStatement(query);
+        ) {
             ps.setInt(1, id);
             ps.executeQuery();
         } catch (SQLException e) {

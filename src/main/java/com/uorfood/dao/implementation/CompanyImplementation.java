@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CompanyImplementation implements CompanyDao {
     private Config config = new Config();
-    private Connection conn = config.getConnection();
     private static List<Company> companies;
 
     public CompanyImplementation() throws SQLException {
@@ -21,9 +20,11 @@ public class CompanyImplementation implements CompanyDao {
     public List<Company> getAllCompany() {
         String query = "SELECT * FROM  COMPANY";
         companies = null;
-        try {
-            Statement stm = conn.createStatement();
-            ResultSet rst = stm.executeQuery(query);
+        try (Connection conn = config.getConnection();
+             Statement stm = conn.createStatement();
+             ResultSet rst = stm.executeQuery(query)
+        ) {
+
             if (companies == null) {
                 companies = new ArrayList<Company>();
                 while (rst.next()) {
@@ -50,9 +51,11 @@ public class CompanyImplementation implements CompanyDao {
     public List<Company> getCompanyByEmail(String email) {
         String query = "SELECT * FROM COMPANY";
         companies = null;
-        try {
+        try(Connection conn = config.getConnection();
             Statement stm = conn.createStatement();
             ResultSet rst = stm.executeQuery(query);
+        ) {
+
             if (companies == null) {
                 companies = new ArrayList<Company>();
                 while (rst.next()) {
@@ -80,15 +83,17 @@ public class CompanyImplementation implements CompanyDao {
     @Override
     public void insertCompany(Company company) {
         String query = "INSERT INTO COMPANY (company_name,company_donation,company_link,company_email,company_punctuation,company_show,user_id) VALUES(?,?,?,?,?,?,?)";
-        try {
+        try(Connection conn = config.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
+        ) {
+
             ps.setString(1, company.getName());
             ps.setInt(2, company.getDonation());
             ps.setString(3, company.getPhoto());
             ps.setString(4, company.getEmail());
-            ps.setInt(5,company.getPunctuation());
+            ps.setInt(5, company.getPunctuation());
             ps.setInt(6, company.getShow());
-            ps.setInt(7,company.getUserId());
+            ps.setInt(7, company.getUserId());
             ps.executeQuery();
 
         } catch (SQLException e) {
@@ -99,16 +104,18 @@ public class CompanyImplementation implements CompanyDao {
     @Override
     public void editCompany(Company company, Integer id) {
         String query = "UPDATE company SET company_name=?,company_email=?,company_link=?,company_donation=?,company_punctuation=?,company_show=? WHERE user_id=? AND company_id=?";
-        try {
+        try(Connection conn = config.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
+        ) {
+
             ps.setString(1, company.getName());
             ps.setString(2, company.getEmail());
             ps.setString(3, company.getPhoto());
             ps.setInt(4, company.getDonation());
             ps.setInt(5, company.getPunctuation());
-            ps.setInt(6,company.getShow());
-            ps.setInt(7,company.getUserId());
-            ps.setInt(8,id);
+            ps.setInt(6, company.getShow());
+            ps.setInt(7, company.getUserId());
+            ps.setInt(8, id);
             ps.executeQuery();
 
         } catch (SQLException e) {
@@ -119,8 +126,9 @@ public class CompanyImplementation implements CompanyDao {
     @Override
     public void deleteCompany(Integer id) {
         String query = "DELETE FROM company WHERE company_id=?";
-        try {
+        try(Connection conn = config.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
+        ) {
             ps.setInt(1, id);
             ps.executeQuery();
 
