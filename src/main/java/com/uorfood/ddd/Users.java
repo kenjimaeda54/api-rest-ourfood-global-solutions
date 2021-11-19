@@ -2,6 +2,7 @@ package com.uorfood.ddd;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 @XmlRootElement
 public class Users {
     private int id;
@@ -11,6 +12,7 @@ public class Users {
     private int punctuation = 0;
     private int donation = 0;
     private String photo;
+
 
     public String getPhoto() {
         return photo;
